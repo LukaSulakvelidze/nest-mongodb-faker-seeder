@@ -50,14 +50,14 @@ export class UsersService implements OnModuleInit {
     if (age) {
       return this.userModel
         .find({ age: age })
-        .skip(page * take)
+        .skip((page - 1) * take)
         .limit(take);
     }
 
     if (ageFrom && ageTo) {
       return this.userModel
         .find({ age: { $gte: ageFrom, $lte: ageTo } })
-        .skip(page * take)
+        .skip((page - 1) * take)
         .limit(take);
     }
     return this.userModel
